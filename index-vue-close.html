@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <style>
+    .drag-container {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .drag-item {
+      background-color: #f1f1f1;
+      padding: 10px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    
+    .drag-item-close {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+    }
+    
+    .drop-container {
+      min-height: 200px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2>Arrastrar y soltar con Composition API de Vue.js</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Elementos disponibles</h4>
+        <ul class="drag-container">
+          <li v-for="item in dragItems" class="drag-item" :draggable="true" @dragstart="dragStart(item)">{{ item }}</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h4>Área de soltar</h4>
+        <div class="drop-container" @drop="drop" @dragover="allowDrop">
+          <div v-for="item in droppedItems" class="drag-item">
+            {{ item }}
+            <span class="drag-item-close" @click="removeItem(item)">&times;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          dragItems: ['Elemento 1', 'Elemento 2', 'Elemento 3'],
+          droppedItems: [],
+        }
+      },
+      methods: {
+        allowDrop(event) {
+          event.preventDefault();
+        },
+        dragStart(item) {
+          event.dataTransfer.setData('text/plain', item);
+        },
+        drop(event) {
+          event.preventDefault();
+          const item = event.dataTransfer.getData('text/plain');
+          this.dragItems = this.dragItems.filter(i => i !== item);
+          this.droppedItems.push(item);
+        },
+        removeItem(item) {
+          this.droppedItems = this.droppedItems.filter(i => i !== item);
+        },
+      },
+    });
+  </script>
+</body>
+</html>
