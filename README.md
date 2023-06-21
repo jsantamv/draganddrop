@@ -12,3 +12,7 @@ En esta versión modificada, los elementos arrastrados ya no se eliminan de la l
 El botón de cierre se mantiene para permitir eliminar los elementos arrastrados de la lista droppedItems cuando se hace clic en él, utilizando el método removeItem.
 
 Ahora, los elementos arrastrados se mantendrán tanto en la lista original como en el área de soltar, y se podrán eliminar solo desde el área de soltar cuando se hace clic en el botón de cierre.
+
+# To Check
+
+https://arieldraganddrop.netlify.app/index-vue-close.html
