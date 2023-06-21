@@ -13,13 +13,10 @@
       background-color: #f1f1f1;
       padding: 10px;
       margin-bottom: 10px;
-      position: relative;
     }
     
     .drag-item-close {
-      position: absolute;
-      top: 5px;
-      right: 5px;
+      float: right;
       cursor: pointer;
     }
     
@@ -72,7 +69,6 @@
         drop(event) {
           event.preventDefault();
           const item = event.dataTransfer.getData('text/plain');
-          this.dragItems = this.dragItems.filter(i => i !== item);
           this.droppedItems.push(item);
         },
         removeItem(item) {
