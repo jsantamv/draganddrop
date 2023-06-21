@@ -1,6 +1,6 @@
 # Drag and Drop con Vue 
 
-En este ejemplo, hemos utilizado la sintaxis de la Composition API de Vue.js para crear el componente Vue. Los elementos disponibles se almacenan en la propiedad dragItems del componente y se muestran en la lista utilizando la directiva v-for. Cada elemento de la lista tiene el atributo draggable establecido en true y se activa el evento dragstart para iniciar el arrastre.
+En este ejemplo **index-vue-close.html**, hemos utilizado la sintaxis de la Composition API de Vue.js para crear el componente Vue. Los elementos disponibles se almacenan en la propiedad dragItems del componente y se muestran en la lista utilizando la directiva v-for. Cada elemento de la lista tiene el atributo draggable establecido en true y se activa el evento dragstart para iniciar el arrastre.
 
 El área de soltar tiene los eventos drop y dragover asociados a las funciones drop y allowDrop, respectivamente. En el método drop, se obtiene el elemento arrastrado y se filtra de la lista dragItems. Luego, se crea un nuevo elemento utilizando la función createDraggedItem y se añade a la zona de soltar.
 
